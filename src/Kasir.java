@@ -184,16 +184,27 @@ public class Kasir {
                     // tampilkan pesan untuk memasukkan nomor meja yang akan dihapus untuk digunakan
                     // pada method hapusPelanggan()
                     // EDIT DISINI
+                    System.out.print("Masukkan nomor meja: ");
+                    int nomorMejaHapus = scanner.nextInt();
+                    hapusPelanggan(nomorMejaHapus);
+                    break;
                 case 5:
                     // Untuk melihat total harga pesanan pada meja tertentu
                     // tampilkan pesan untuk memasukkan nomor meja
                     // jangan lupa membedakan keluaran apabila pelanggan belum memesan apapun /
                     // total harga 0
                     // EDIT DISINI
+                    System.out.println("Masukkan nomor meja untuk dihitung harga: ");
+                    int nomorMejaHitungHarga = scanner.nextInt();
+                    hitungHargaPesanan(nomorMejaHitungHarga);
                 case 6:
                     // untuk melihat pesanan pada meja tertentu
                     // tampilkan pesan untuk memasukkan nomor meja
                     // EDIT DISINI
+                    System.out.print("Nomor meja: ");
+                    int nomorMejaTampilPesanan = scanner.nextInt();
+                    tampilkanPesanan(nomorMejaTampilPesanan);
+                    break;
 
                 case 0:
                     System.out.println("Terima kasih telah menggunakan aplikasi kasir restoran!");
