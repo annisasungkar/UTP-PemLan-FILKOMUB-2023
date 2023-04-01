@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Kasir {
     private Meja[] daftarMeja;
     private Menu[] daftarMenu;
+    private int jumlahMeja;
 
     public Kasir() {
         daftarMeja = new Meja[10];
@@ -20,21 +21,42 @@ public class Kasir {
 
     // digunakan untuk menampilkan daftar meja beserta keterangan ketersediaannya
     // gunakan method isKosong pada class Kasir agar lebih mudah
-    public void tampilkanDaftarMeja() {
+    public void tampilkanDaftarMeja(Kasir kasir, boolean[] isKosong) {
         // EDIT DISINI
+        System.out.println("Daftar Meja:");
+        for (int i = 0; i < jumlahMeja; i++) {
+            Meja meja = daftarMeja[i];
+            String status = meja.isKosong(i) ? "kosong" : "isi";
+            System.out.println("Meja " + meja.getNomorMeja() + " - " + status);
+        }
+    }
+
+    private boolean isKosong(int nomorMeja) {
+        return false;
     }
 
     // untuk menambahkan pelanggan pada meja tertentu
     // jika meja kosong tambahkan pelanggan pada meja tersebut
     // jika tidak buatlah keterangan bahwa meja sudah ada pelanggan
-    public void tambahPelanggan(int nomorMeja, Pelanggan pelanggan) {
+    public void tambahPelanggan(boolean nomorMeja, Pelanggan pelanggan) {
         // EDIT DISINI
+        Meja meja = cariMeja(nomorMeja);
+    if (meja == null) {
+        System.out.println("Meja tidak ditemukan");
+    } else if (!meja.isKosong(nomorMeja)) {
+        System.out.println("Meja sedang digunakan");
+    } else {
+        meja.setPelanggan(pelanggan);
+        meja.isKosong(false);
+        System.out.println("Pelanggan berhasil ditambahkan ke meja " + nomorMeja); }
+
     }
 
     // menambah pesanan menu pada nomor meja
     // jika menu tidak ada dalam daftar maka tampilkan "Menu is null"
     public void tambahPesanan(int nomorMeja, Menu menu) {
         // EDIT DISINI
+        
     }
 
     // Menghapus pelanggan
@@ -95,7 +117,7 @@ public class Kasir {
         System.out.println("0. Keluar");
     }
 
-    public void jalankan() {
+    public void jalankan(Kasir kasir) {
         Scanner scanner = new Scanner(System.in);
         int pilihan = -1;
         while (pilihan != 0) {
@@ -107,6 +129,11 @@ public class Kasir {
                 case 1:
                     // menampilkan daftar meja dengan method yang sudah ada
                     // EDIT DISINI
+                    System.out.println("Daftar Meja Restoran:");
+                    for (int i = 0; i < this.jumlahMeja; i++) {
+                         int nomorMeja = i + 1;
+                         String status = kasir.isKosong(nomorMeja) ? "kosong" : "isi";
+                         System.out.println("Meja " + nomorMeja + " - " + status);
                 case 2:
                     // tampilkan pesan untuk input nomor meja dan nama pelanggan untuk digunakan
                     // pada method

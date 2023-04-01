@@ -43,7 +43,8 @@ public class Meja {
     }
 
     // untuk mengecek apakah meja kosong
-    public boolean isKosong() {
+    public boolean isKosong(boolean b) {
         // EDIT DISINI
+        return !this.daftarMeja[b - 1];
     }
 }
